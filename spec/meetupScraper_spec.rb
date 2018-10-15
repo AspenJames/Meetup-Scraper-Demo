@@ -3,7 +3,11 @@ RSpec.describe MeetupScraper do
     expect(MeetupScraper::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  describe MeetupScraper::Group do
+    it "can be created with a name and href value" do
+      @group = MeetupScraper::Group.new("PuPPy", "meetup.com/puppy")
+      expect(@group.name).to eq("PuPPy")
+      expect(@group.href).to eq("meetup.com/puppy")
+    end
   end
 end
