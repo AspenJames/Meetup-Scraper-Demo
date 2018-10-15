@@ -1,3 +1,4 @@
+require 'launchy'
 class MeetupScraper::CLI
 
   def initialize 
@@ -18,12 +19,14 @@ class MeetupScraper::CLI
   end
 
   def list_menu 
-    puts "Select a number for more info, 'exit!', or 'list' to return to the menu"
+    puts "Select a number to open in browser, 'exit!', or 'list' to return to the menu"
     input = nil
     until input == "exit!"
       input = gets.chomp
       if input.to_i.between?(1,10)
-        puts MeetupScraper::Group.all[input.to_i - 1].href
+        Launchy.open(MeetupScraper::Group.all[input.to_i - 1].href)
+        self.list_groups
+        self.list_menu
       elsif input == 'list'
         self.list_groups
         self.list_menu
