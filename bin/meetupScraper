@@ -2,4 +2,5 @@
 
 require './lib/meetupScraper'
 
-MeetupScraper::CLI.new.run
+# The above loads all of our work, we just need
+# to "kick-off" the execution of it all here.
